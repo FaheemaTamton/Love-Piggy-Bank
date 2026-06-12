@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container text-center" style="max-width:500px; margin:auto; background:#fff0f6; padding:30px; border-radius:20px;">
+
+    <h2 style="color:#ff3399;">😡 Log a Quarrel</h2>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if show_qr %}
+        <!-- PAYMENT STEP -->
+        <h4> Penalty Payment</h4>
+       
+        <img src="{{ user.profile.qr_code.url }}"
+             style="width:200px; margin:20px auto; display:block;">
+
+        <p><b>Amount:</b> ₹{{ user.profile.penalty_amount }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button name="confirm_payment"
+                    value="yes"
+                    style="margin-top:20px; background:#ff4d6d; color:white;
+                           border:none; padding:10px 25px; border-radius:20px;">
+                ✅ Done
+            </button>
+        </form>
+
+    {% else %}
+        <!-- FORM STEP -->
+        <form method="POST">
+            {% csrf_token %}
+
+            <p><b>Did you have a quarrel?</b></p>
+            <label>
+                <input type="radio" name="confirm" value="yes" onclick="toggleReason(true)"> Yes 😔
+            </label>
+            <label style="margin-left:15px;">
+                <input type="radio" name="confirm" value="no" onclick="toggleReason(false)"> No 😊
+
+            </label>
+
+            <br><br>
+
+            <textarea name="reason"
+          id="reason"
+          class="form-control"
+          placeholder="Reason (required if Yes)"></textarea>
+
+            <button type="submit"
+                    style="margin-top:20px; background:#ff4d6d; color:white;
+                           border:none; padding:10px 25px; border-radius:20px;">
+                Submit
+            </button>
+        </form>
+    {% endif %}
+
+</div>
+
+<script>
+function toggleReason(isYes) {
+    const reason = document.getElementById("reason");
+
+    if (isYes) {
+        reason.required = true;
+    } else {
+        reason.required = false;
+        reason.value = "";
+    }
+}
+</script>
+
+
+{% endblock %}

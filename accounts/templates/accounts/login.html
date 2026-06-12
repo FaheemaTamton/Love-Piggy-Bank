@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <!-- Heading with bow -->
+    <h2>
+        <img src="https://i.imgur.com/OvMZBs9.png" alt="Bow" style="width:40px; vertical-align:middle; margin-right:10px;">
+        Love Piggy Bank Login
+    </h2>
+
+    <!-- Cute cartoon -->
+    <div class="cartoon">
+        <img src="https://i.imgur.com/n1x2FJG.png" alt="Cute Couple" style="width:70px;">
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Miss (Wife Name) -->
+        <label for="miss">Miss (Wife Name)</label>
+        <input type="text" name="username" placeholder="Enter Wife Name" class="form-control mb-2" required>
+
+        <!-- Mister (Husband Name) -->
+        <label for="mister">Mister (Husband Name)</label>
+        <input type="text" name="mister" placeholder="Enter Husband Name" class="form-control mb-2" required>
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Enter Password" class="form-control mb-2" required>
+
+        <button type="submit" class="btn-login">💖 Login</button>
+    </form>
+
+    <div class="footer">
+        Don’t have an account? <a href="{% url 'accounts:register' %}">Register Here</a>
+    </div>
+</div>
+
+<style>
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: #fff0f5;
+    color: #333;
+    text-align: center;
+    padding: 40px;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+}
+h2 {
+    color: #ff69b4;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+input[type="text"], input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ffc0cb;
+    border-radius: 10px;
+    font-size: 16px;
+}
+button.btn-login {
+    background: #ff69b4;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+button.btn-login:hover {
+    background: #ff1493;
+}
+.footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+.footer a {
+    color: #ff69b4;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.cartoon {
+    margin: 15px 0;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="report-container">
+    <h1>💖 Love Piggy Bank Report 💖</h1>
+
+    <div class="stats-cards">
+        <!-- Total Balance -->
+        <div class="card">
+            <h3>💰 Total Balance</h3>
+            <p>₹{{ total_savings }}</p>
+        </div>
+
+        <!-- Total Quarrels -->
+        <div class="card">
+            <h3>😡 Total Quarrels</h3>
+            <p>{{ total_quarrels }}</p>
+        </div>
+
+        <!-- Weekend Bonding -->
+        <div class="card">
+            <h3>🌸 Bonding Weekends</h3>
+            <p>Completed: {{ total_bonding_done }} <br> Missed: {{ total_weekends_missed }}</p>
+        </div>
+    </div>
+
+    <!-- Fun Quotes / Motivation -->
+    <div class="fun-quote">
+        <p>“Turning quarrels into love savings! 💕 Keep growing together.”</p>
+    </div>
+
+    <!-- Export PDF Button -->
+    <div class="export-buttons">
+        <a href="{% url 'savings:export_pdf' %}" class="btn-export">Export as PDF 📄</a>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+.report-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+h1 {
+    color: #ff3399;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+.stats-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #ffe6f2;
+    border-radius: 20px;
+    padding: 20px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #ff66b3;
+}
+
+.card p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.fun-quote {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.export-buttons {
+    margin-top: 30px;
+}
+
+.btn-export {
+    text-decoration: none;
+    background-color: #ff66b3;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-export:hover {
+    background-color: #ff3399;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>💖 My Profile 💖</h2>
+
+    <p><strong>Miss (Wife Name):</strong> {{ profile.miss_name }}</p>
+    <p><strong>Mister (Husband Name):</strong> {{ profile.mister_name }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Fixed Penalty:</strong> ₹{{ profile.penalty_amount }}</p>
+    {% if profile.qr_code %}
+    <p><strong>QR Code:</strong> <br><img src="{{ profile.qr_code.url }}" alt="QR Code" width="150px"></p>
+    {% endif %}
+</div>
+
+<style>
+.profile-container {
+    max-width: 500px;
+    margin: auto;
+    background: #fff0f6;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.profile-container h2 {
+    color: #ff3399;
+}
+</style>
+{% endblock %}

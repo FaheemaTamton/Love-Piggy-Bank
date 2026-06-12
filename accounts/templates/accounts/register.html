@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>💖 Love Piggy Bank - Register 💖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6f2;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0px 0px 20px #ffcccc;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            color: #ff3399;
+            margin-bottom: 20px;
+        }
+        img.couple {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 80px;
+            height: 80px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 10px;
+            border: 1px solid #ffb3d9;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #ff66b3;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff3399;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .login-link a {
+            color: #ff3399;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+
+        <h1>💖 Register Your Love 💖</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Render User Form Fields -->
+            {{ user_form.as_p }}
+             
+             
+            <!-- Render Profile Form Fields -->
+            {{ profile_form.as_p }}
+
+            <button type="submit">Register 💖</button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="{% url 'accounts:login' %}">Login here</a>
+        </div>
+    </div>
+</body>
+</html>

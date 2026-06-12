@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center mt-4">
+
+    <!-- Welcome Section -->
+    <h1 class="dashboard-heading">
+        <img src="{% static 'images/couple.png' %}" alt="Couple" class="header-icon">
+        💖 Welcome, {{ user.username }} 💖
+    </h1>
+    <p class="lead">Hello <b>{{ user.profile.miss_name }}</b> & <b>{{ user.profile.mister_name }}</b>! 🥰</p>
+
+    <hr class="my-4">
+
+    <!-- Weekend Reminder -->
+    {% if weekend_reminder %}
+    <div class="alert alert-warning cute-alert">
+        🌸 Reminder: Spend quality time together this weekend! 🌸 <br>
+        Or your Love Piggy Bank penalty is <b>₹{{ user.profile.penalty_amount }}</b> 💕
+    </div>
+    {% else %}
+    <div class="alert alert-success cute-alert">
+        🎉 Yay! You already logged bonding for this weekend. Keep loving! 💖
+    </div>
+    {% endif %}
+
+    <!-- Action Buttons -->
+    <div class="row text-center mt-4">
+        <div class="col-md-6 mb-3">
+            <a href="{% url 'bonding:bonding' %}" class="btn btn-love btn-lg w-75">
+                🥰 Log Bonding
+            </a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a href="{% url 'bonding:quarrel' %}" class="btn btn-quarrel btn-lg w-75">
+                😡 Log Quarrel
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Stats Section -->
+    <h2 class="mt-5 mb-4">📊 Your Love Stats</h2>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <img src="{% static 'images/heart.png' %}" alt="Bonding" class="stat-icon">
+                <h4>Total Bonding</h4>
+                <p>{{ total_bonding_done }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <img src="{% static 'images/angry.png' %}" alt="Quarrels" class="stat-icon">
+                <h4>Total Quarrels</h4>
+                <p>{{ total_quarrels }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <img src="{% static 'images/piggy.png' %}" alt="Savings" class="stat-icon">
+                <h4>Love Piggy Bank</h4>
+                <p>₹{{ total_savings }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Profile Icon in top-right corner -->
+<div style="position: absolute; top: 20px; right: 20px;">
+    <a href="{% url 'accounts:profile' %}">
+        <img src="https://i.imgur.com/your-icon.png" alt="My Profile" style="width:40px; height:40px; border-radius:50%;">
+    </a>
+</div>
+
+    <!-- Logout -->
+    <div class="text-center mt-5">
+        <a href="{% url 'accounts:logout' %}" class="btn btn-secondary">🚪 Logout</a>
+    </div>
+</div>
+
+<!-- Cute Styles -->
+<style>
+.dashboard-heading {
+    font-size: 2.2rem;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+.header-icon {
+    width: 50px;
+    margin-right: 10px;
+}
+.btn-love {
+    background-color: #ff4d6d;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    padding: 12px;
+}
+.btn-quarrel {
+    background-color: #ff8080;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    padding: 12px;
+}
+.stat-card {
+    background-color: #fff0f6;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.stat-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+.cute-alert {
+    font-size: 1.1rem;
+    border-radius: 20px;
+}
+</style>
+{% endblock %}
