@@ -6,6 +6,10 @@ from savings.models import Savings
 from django.contrib.auth.decorators import login_required
 from datetime import date
 
+from accounts.models import Profile
+Profile.objects.all()
+
+
 # ----- REGISTER -----
 def register(request):
     if request.method == "POST":
