@@ -72,4 +72,25 @@
     </style>
 </head>
 <body>
-    
+    <div class="register-container">
+
+        <h1>💖 Register Your Love 💖</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Render User Form Fields -->
+            {{ user_form.as_p }}
+             
+             
+            <!-- Render Profile Form Fields -->
+            {{ profile_form.as_p }}
+
+            <button type="submit">Register 💖</button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="{% url 'accounts:login' %}">Login here</a>
+        </div>
+    </div>
+</body>
+</html>
