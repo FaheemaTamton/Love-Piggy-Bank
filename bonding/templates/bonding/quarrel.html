@@ -18,6 +18,15 @@
 
         <p><b>Amount:</b> ₹{{ user.profile.penalty_amount }}</p>
 
+        <form method="POST">
+            {% csrf_token %}
+            <button name="confirm_payment"
+                    value="yes"
+                    style="margin-top:20px; background:#ff4d6d; color:white;
+                           border:none; padding:10px 25px; border-radius:20px;">
+                ✅ Done
+            </button>
+        </form>
 
     {% else %}
         <!-- FORM STEP -->
