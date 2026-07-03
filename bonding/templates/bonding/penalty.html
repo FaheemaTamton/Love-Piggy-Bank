@@ -1,1 +1,21 @@
 
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align:center; background:#fff0f6; padding:30px; border-radius:20px;">
+    <h3 style="color:#ff3399;">You skipped bonding 💔</h3>
+    <p>₹{{ user.profile.penalty_amount }} added to Love Piggy Bank 💕</p>
+    <a href="{% url 'accounts:dashboard' %}" class="btn btn-love">Back to Dashboard</a>
+</div>
+
+<style>
+.btn-love {
+    background-color: #ff4d6d;
+    color: white;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+</style>
+{% endblock %}
