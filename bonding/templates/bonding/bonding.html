@@ -13,24 +13,7 @@
         <p style="color:#ff3399;font-weight:bold;">
             Bonding can be logged only on weekends 🌸
         </p>
-        <a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
-
-    {% elif already_logged %}
-        <p style="color:green;font-weight:bold;">
-            You’ve already logged bonding for this weekend 💖
-        </p>
-        <a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
-
-    {% else %}
-
-        {% if error_message %}
-            <p style="color:red;font-weight:bold;">
-                {{ error_message }}
-            </p>
-        {% endif %}
-
-        <form method="POST">
-            {% csrf_token %}
+   
 
             <p>Did you spend quality time together this weekend?</p>
 
