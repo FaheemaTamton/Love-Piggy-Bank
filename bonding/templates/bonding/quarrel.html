@@ -34,15 +34,7 @@
             {% csrf_token %}
 
             <p><b>Did you have a quarrel?</b></p>
-            <label>
-                <input type="radio" name="confirm" value="yes" onclick="toggleReason(true)"> Yes 😔
-            </label>
-            <label style="margin-left:15px;">
-                <input type="radio" name="confirm" value="no" onclick="toggleReason(false)"> No 😊
-
-            </label>
-
-            <br><br>
+         
 
             <textarea name="reason"
           id="reason"
