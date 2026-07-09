@@ -21,7 +21,16 @@
         </p>
         <a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
 
-    
+    {% else %}
+
+        {% if error_message %}
+            <p style="color:red;font-weight:bold;">
+                {{ error_message }}
+            </p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
 
             <p>Did you spend quality time together this weekend?</p>
 
