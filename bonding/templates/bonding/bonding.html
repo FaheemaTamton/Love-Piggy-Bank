@@ -23,27 +23,6 @@
 
     {% else %}
 
-        {% if error_message %}
-            <p style="color:red;font-weight:bold;">
-                {{ error_message }}
-            </p>
-        {% endif %}
-
-        <form method="POST">
-            {% csrf_token %}
-
-            <p>Did you spend quality time together this weekend?</p>
-
-            <label style="display:flex;justify-content:center;gap:10px;">
-                <input type="radio" name="bonding_option" value="yes">
-                Yes, we did 🥰
-            </label>
-
-            <label style="display:flex;justify-content:center;gap:10px;margin-top:5px;">
-                <input type="radio" name="bonding_option" value="no">
-                No, we didn’t 😔
-            </label>
-
             <p style="margin-top:15px;">
                 If skipped, ₹{{ user.profile.penalty_amount }}
                 goes to Love Piggy Bank 💕
